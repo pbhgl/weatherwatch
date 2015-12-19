@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel='stylesheet' type='text/css' href='/bower_components/pebble-slate/dist/css/slate.min.css'>
+  <link rel='stylesheet' type='text/css' href='/css/style.css'>
+</head>
+<body>
+  <div class="item-container">
+    <div class='header'>
+      <div class='left'>
+        <h1 class='title'>WeatherWatch</h1>
+      </div>
+    </div>
+  </div>
+  <form id="main-form">
+    <div class="item-container">
+      <div class="item-container-content">
+        <div class="item">
+          Use this configuration page to choose your settings.
+        </div>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="item-container-header">Weather Underground API Key</div>
+      <div class="item-container-content">
+        <label class="item">
+          <div class="item-input-wrapper">
+            <input id="apiKey" type="text" class="item-input" name="apikey" placeholder="Enter your API key here">
+          </div>
+        </label>
+        <div class="item-container-footer">Weather Underground API is used for the weather data.
+          Weather Underground API requires an API key. As a developer you may already have one. Otherwise you can
+          get one at www.wunderground.com/weather/api/ (choose a plan with hourly forecast).
+        </div>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="item-container-header">Location</div>
+      <div class="item-container-content">
+        <label class="item">
+          Use GPS Location
+          <input id="gps" type="radio" class="item-radio" name="location" value="usegps" checked>
+        </label>
+        <label class="item">
+          Use Latitude, Longitude
+          <input id="latlon" type="radio" class="item-radio" name="location" value="uselatlon">
+        </label>
+        <label class="item">
+          <div class="item-subtitle">Latitude:</div>
+          <div class="item-input-wrapper">
+            <input id="latitude" type="text" class="item-input" name="latitude" placeholder="0">
+          </div>
+        </label>
+        <label class="item">
+          <div class="item-subtitle">Longitude:</div>
+          <div class="item-input-wrapper">
+            <input id="longitude" type="text" class="item-input" name="longitude" placeholder="0">
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="item-container-header">Weather Update Frequency (Minutes)</div>
+      <div class="item-container-content">
+        <label class="item">
+          <input type="range" class="item-slider" name="sliderfreq" value="60">
+          <div class="item-input-wrapper item-slider-text">
+            <input id="frequency" type="text" class="item-input" name="sliderfreq" value="60">
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="item-container-header">Display Configuration</div>
+      <div class="item-container-content">
+        <label class="item">
+          Show Moon Phase
+          <input id="showMoonPhase" type="checkbox" class="item-checkbox" name="showmoonphase">
+        </label>
+        <label class="item">
+          Show Location
+          <input id="showLocation" type="checkbox" class="item-checkbox" name="showlocation" checked>
+        </label>
+        <label class="item">
+          Show Time of Last Update
+          <input id="showUpdateTime" type="checkbox" class="item-checkbox" name="showupdtime" checked>
+        </label>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="item-container-header">Color Settings</div>
+      <div class="item-container-content">
+        <label class="item">
+          Background
+          <input id="colorBackground" type="text" class="item-color item-color-normal" name="color-bg" value="0xFFFFFF">
+        </label>
+        <label class="item">
+          Hour Hand
+          <input id="colorHourHand" type="text" class="item-color item-color-normal" name="color-hour-hand" value="0xFFFFFF">
+        </label>
+        <label class="item">
+          Minute Hand
+          <input id="colorMinuteHand" type="text" class="item-color item-color-normal" name="color-minute-hand" value="0xFFFFFF">
+        </label>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="button-container">
+        <input id="submitButton" type="button" class="item-button" value="SEND">
+      </div>
+    </div>
+    <div class="item-container">
+      <div class="item-container-content">
+        <div class="item">
+          Weather data provided by
+          <img style="width:4.5cm;" src="wundergroundLogo_4c_horz.png">
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <script src='/bower_components/pebble-slate/dist/js/slate.min.js'></script>
+  <script src='/js/main.js'></script>
+</body>
+</html>
