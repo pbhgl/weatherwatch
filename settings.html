@@ -7,6 +7,7 @@
   <link rel='stylesheet' type='text/css' href='css/style.css'>
 </head>
 <body>
+
   <div class="item-container">
     <div class='header'>
       <div class='left'>
@@ -14,11 +15,15 @@
       </div>
     </div>
   </div>
+
   <form id="main-form">
+
     <div class="item-container">
       <div class="item-container-content">
         <div class="item">
-          Use this configuration page to choose your settings.
+          <div class="button-container">
+            <input id="submitButton" type="button" class="item-button" value="SEND">
+          </div>
         </div>
       </div>
     </div>
@@ -49,6 +54,7 @@
           Use Latitude, Longitude
           <input id="latlon" type="radio" class="item-radio" name="location" value="uselatlon">
         </label>
+        <span id='latlon-settings'>
         <label class="item">
           <div class="item-subtitle">Latitude:</div>
           <div class="item-input-wrapper">
@@ -61,6 +67,7 @@
             <input id="longitude" type="text" class="item-input" name="longitude" placeholder="0">
           </div>
         </label>
+      </span>
       </div>
     </div>
 
@@ -80,52 +87,83 @@
       <div class="item-container-header">Display Configuration</div>
       <div class="item-container-content">
         <label class="item">
-          Show Moon Phase
-          <input id="showMoonPhase" type="checkbox" class="item-checkbox" name="showmoonphase">
+          Display Location
+          <input id="displayLocation" type="checkbox" class="item-checkbox" name="displaylocation" checked>
         </label>
         <label class="item">
-          Show Location
-          <input id="showLocation" type="checkbox" class="item-checkbox" name="showlocation" checked>
+          Display Hour Markers
+          <input id="displayHourMarkers" type="checkbox" class="item-checkbox" name="displayhourmarkers">
         </label>
         <label class="item">
-          Show Time of Last Update
-          <input id="showUpdateTime" type="checkbox" class="item-checkbox" name="showupdtime" checked>
+          Display Minor Markers
+          <input id="displayMinorMarkers" type="checkbox" class="item-checkbox" name="displayminormarkers">
+        </label>
+        <label class="item">
+          Display Observation Time (O)
+          <input id="displayObservationTime" type="checkbox" class="item-checkbox" name="displayobstime">
+        </label>
+        <label class="item">
+          Display Update Time (U)
+          <input id="displayUpdateTime" type="checkbox" class="item-checkbox" name="displayupdtime">
         </label>
       </div>
     </div>
 
-    <div class="item-container">
+    <div id="colorSettings" class="item-container">
       <div class="item-container-header">Color Settings</div>
       <div class="item-container-content">
         <label class="item">
           Background
-          <input id="colorBackground" type="text" class="item-color item-color-normal" name="color-bg" value="0xFFFFFF">
+          <input id="colorBackground" type="text" class="item-color item-color-normal" name="color-bg" value="0x000000">
+        </label>
+        <label class="item">
+          Text
+          <input id="colorText" type="text" class="item-color item-color-normal" name="color-text" value="0xFFFFFF">
         </label>
         <label class="item">
           Hour Hand
           <input id="colorHourHand" type="text" class="item-color item-color-normal" name="color-hour-hand" value="0xFFFFFF">
         </label>
         <label class="item">
-          Minute Hand
-          <input id="colorMinuteHand" type="text" class="item-color item-color-normal" name="color-minute-hand" value="0xFFFFFF">
+          Minute Hand (Bluetooth connected)
+          <input id="colorMinuteHand" type="text" class="item-color item-color-normal" name="color-minute-hand" value="0x55AAFF">
         </label>
+        <label class="item">
+          Minute Hand (Bluetooth disconnected)
+          <input id="colorMinuteHandNoBT" type="text" class="item-color item-color-normal" name="color-minute-hand-nobt" value="0xFF5500">
+        </label>
+        <label class="item">
+          Hour Markers
+          <input id="colorHourMarkers" type="text" class="item-color item-color-normal" name="color-hour-markers" value="0xFFFFFF">
+        </label>
+        <label class="item">
+          Minor Markers
+          <input id="colorMinorMarkers" type="text" class="item-color item-color-normal" name="color-minor-markers" value="0xFFFFFF">
+        </label>
+        <div class="item">
+          <div class="button-container">
+            <input id="reloadDefaultColors" type="button" class="item-button" value="RELOAD DEFAULT COLORS">
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="item-container">
       <div class="button-container">
-        <input id="submitButton" type="button" class="item-button" value="SEND">
+        <input id="submitButton2" type="button" class="item-button" value="SEND">
       </div>
     </div>
-    <div class="item-container">
-      <div class="item-container-content">
-        <div class="item">
-          Weather data provided by
-          <img style="width:4.5cm;" src="wundergroundLogo_4c_horz.png">
-        </div>
-      </div>
-    </div>
+
   </form>
+
+  <div class="item-container">
+    <div class="item-container-content">
+      <div class="item">
+        Weather data provided by
+        <img style="width:4.5cm;" src="images/wundergroundLogo_4c_horz.png">
+      </div>
+    </div>
+  </div>
 
   <script src='bower_components/pebble-slate/dist/js/slate.min.js'></script>
   <script src='js/main.js'></script>
