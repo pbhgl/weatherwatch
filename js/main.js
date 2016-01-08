@@ -111,7 +111,6 @@ function loadOptions() {
   var $frequency = $('#frequency');
   if (localStorage.frequency) {
     $frequency[0].value = localStorage.frequency;
-    //$frequencySlider[0].value = localStorage.frequency;
   }
 
   var $displayLocation = $('#displayLocation');
