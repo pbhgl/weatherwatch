@@ -68,7 +68,7 @@ function submit() {
 function loadOptions() {
   var callerVersion = parseInt(getQueryParam('version', 0));
   var storageVersion = localStorage.versionLabel;
-  
+
   var platform = getQueryParam('platform', 'chalk');
   if (platform == 'aplite') {
     $colorSettings = $('#colorSettings');
@@ -111,6 +111,7 @@ function loadOptions() {
   var $frequency = $('#frequency');
   if (localStorage.frequency) {
     $frequency[0].value = localStorage.frequency;
+    $frequencySlider[0].value = localStorage.frequency;
   }
 
   var $displayLocation = $('#displayLocation');
