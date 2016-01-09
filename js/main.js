@@ -1,5 +1,3 @@
-var versionLabel = 100;
-
 (function() {
   loadOptions();
   setHandlers();
@@ -65,9 +63,12 @@ function submit() {
   document.location = return_to + encodeURIComponent(JSON.stringify(getAndStoreConfigData()));
 }
 
+var callerVersion;
+var storageVersion;
+
 function loadOptions() {
-  var callerVersion = parseInt(getQueryParam('version', 0));
-  var storageVersion = localStorage.versionLabel;
+  callerVersion = parseInt(getQueryParam('version', 0));
+  storageVersion = localStorage.versionLabel;
 
   var platform = getQueryParam('platform', 'chalk');
   if (platform == 'aplite') {
@@ -82,8 +83,6 @@ function loadOptions() {
 
   var $gps = $('#gps');
   var $latlon = $('#latlon');
-  var $latitude = $('#latitude');
-  var $longitude = $('#longitude');
   var $latlonSettings = $('#latlon-settings');
   if (localStorage.useLatLon) {
     if (localStorage.useLatLon === 'true') {
@@ -172,6 +171,21 @@ function loadOptions() {
   if (localStorage.colorMinorMarkers) {
     $colorMinorMarkers[0].value = localStorage.colorMinorMarkers;
   }
+
+  var $connectionSettings = $('#connectionSettings');
+  if (callerVersion < 101) {
+    $connectionSettings.css('display', 'none');
+  }
+
+  var $vibrateBtDisconnect = $('#vibrateBtDisconnect');
+  if (localStorage.vibrateBtDisconnect) {
+    $vibrateBtDisconnect[0].checked = localStorage.vibrateBtDisconnect === 'true';
+  }
+
+  var $vibrateBtReconnect = $('#vibrateBtReconnect');
+  if (localStorage.vibrateBtReconnect) {
+    $vibrateBtReconnect[0].checked = localStorage.vibrateBtReconnect === 'true';
+  }
 }
 
 function getAndStoreConfigData() {
@@ -193,9 +207,12 @@ function getAndStoreConfigData() {
   var $colorMinuteHandNoBT = $('#colorMinuteHandNoBT');
   var $colorHourMarkers = $('#colorHourMarkers');
   var $colorMinorMarkers = $('#colorMinorMarkers');
+  var $vibrateBtDisconnect = $('#vibrateBtDisconnect');
+  var $vibrateBtReconnect = $('#vibrateBtReconnect');
 
   var options;
   options = {
+    versionLabel: callerVersion,
     apiKey: $apiKey.val().replace(/\W/g, ""),
     useLatLon: $latlon[0].checked,
     latitude: $latitude.val(),
@@ -212,10 +229,12 @@ function getAndStoreConfigData() {
     colorMinuteHand: $colorMinuteHand.val(),
     colorMinuteHandNoBT: $colorMinuteHandNoBT.val(),
     colorHourMarkers: $colorHourMarkers.val(),
-    colorMinorMarkers: $colorMinorMarkers.val()
+    colorMinorMarkers: $colorMinorMarkers.val(),
+    vibrateBtDisconnect: $vibrateBtDisconnect[0].checked,
+    vibrateBtReconnect: $vibrateBtReconnect[0].checked
   };
 
-  localStorage.versionLabel = versionLabel;
+  localStorage.versionLabel = callerVersion;
   localStorage.apiKey = options.apiKey;
   localStorage.useLatLon = options.useLatLon;
   localStorage.latitude = options.latitude;
@@ -233,6 +252,8 @@ function getAndStoreConfigData() {
   localStorage.colorMinuteHandNoBT = options.colorMinuteHandNoBT;
   localStorage.colorHourMarkers = options.colorHourMarkers;
   localStorage.colorMinorMarkers = options.colorMinorMarkers;
+  localStorage.vibrateBtDisconnect = options.vibrateBtDisconnect;
+  localStorage.vibrateBtReconnect = options.vibrateBtReconnect;
 
   console.log('Got options: ' + JSON.stringify(options));
   return options;
