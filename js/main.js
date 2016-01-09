@@ -177,6 +177,16 @@ function loadOptions() {
     $connectionSettings.css('display', 'none');
   }
 
+  var $InvertOnDisconnect = $('#InvertOnDisconnect');
+  if (platform != 'aplite') {
+    $InvertOnDisconnect.css('display', 'none');
+  }
+
+  var $invertBtDisconnect = $('#invertBtDisconnect');
+  if (localStorage.invertBtDisconnect) {
+    $invertBtDisconnect[0].checked = localStorage.invertBtDisconnect === 'true';
+  }
+
   var $vibrateBtDisconnect = $('#vibrateBtDisconnect');
   if (localStorage.vibrateBtDisconnect) {
     $vibrateBtDisconnect[0].checked = localStorage.vibrateBtDisconnect === 'true';
@@ -207,6 +217,7 @@ function getAndStoreConfigData() {
   var $colorMinuteHandNoBT = $('#colorMinuteHandNoBT');
   var $colorHourMarkers = $('#colorHourMarkers');
   var $colorMinorMarkers = $('#colorMinorMarkers');
+  var $invertBtDisconnect = $('#invertBtDisconnect');
   var $vibrateBtDisconnect = $('#vibrateBtDisconnect');
   var $vibrateBtReconnect = $('#vibrateBtReconnect');
 
@@ -230,6 +241,7 @@ function getAndStoreConfigData() {
     colorMinuteHandNoBT: $colorMinuteHandNoBT.val(),
     colorHourMarkers: $colorHourMarkers.val(),
     colorMinorMarkers: $colorMinorMarkers.val(),
+    invertBtDisconnect: $invertBtDisconnect[0].checked,
     vibrateBtDisconnect: $vibrateBtDisconnect[0].checked,
     vibrateBtReconnect: $vibrateBtReconnect[0].checked
   };
@@ -252,6 +264,7 @@ function getAndStoreConfigData() {
   localStorage.colorMinuteHandNoBT = options.colorMinuteHandNoBT;
   localStorage.colorHourMarkers = options.colorHourMarkers;
   localStorage.colorMinorMarkers = options.colorMinorMarkers;
+  localStorage.invertBtDisconnect = options.invertBtDisconnect;
   localStorage.vibrateBtDisconnect = options.vibrateBtDisconnect;
   localStorage.vibrateBtReconnect = options.vibrateBtReconnect;
 
