@@ -137,6 +137,21 @@ function loadOptions() {
     $displayUpdateTime[0].checked = localStorage.displayUpdateTime === 'true';
   }
 
+  var $displayTemp = $('#displayTemp');
+  if (callerVersion < 103) {
+    $displayTemp.css('display', 'none');
+  }
+
+  var $displayTempC = $('#displayTempC');
+  if (localStorage.displayTempC) {
+    $displayTempC[0].checked = localStorage.displayTempC === 'true';
+  }
+
+  var $displayTempF = $('#displayTempF');
+  if (localStorage.displayTempF) {
+    $displayTempF[0].checked = localStorage.displayTempF === 'true';
+  }
+
   var $colorBackground = $('#colorBackground');
   if (localStorage.colorBackground) {
     $colorBackground[0].value = localStorage.colorBackground;
@@ -210,6 +225,8 @@ function getAndStoreConfigData() {
   var $displayMinorMarkers = $('#displayMinorMarkers');
   var $displayObservationTime = $('#displayObservationTime');
   var $displayUpdateTime = $('#displayUpdateTime');
+  var $displayTempC = $('#displayTempC');
+  var $displayTempF = $('#displayTempF');
   var $colorBackground = $('#colorBackground');
   var $colorText = $('#colorText');
   var $colorHourHand = $('#colorHourHand');
@@ -234,6 +251,8 @@ function getAndStoreConfigData() {
     displayMinorMarkers: $displayMinorMarkers[0].checked,
     displayObservationTime: $displayObservationTime[0].checked,
     displayUpdateTime: $displayUpdateTime[0].checked,
+    displayTempC: $displayTempC[0].checked,
+    displayTempF: $displayTempF[0].checked,
     colorBackground: $colorBackground.val(),
     colorText: $colorText.val(),
     colorHourHand: $colorHourHand.val(),
@@ -257,6 +276,8 @@ function getAndStoreConfigData() {
   localStorage.displayMinorMarkers = options.displayMinorMarkers;
   localStorage.displayObservationTime = options.displayObservationTime;
   localStorage.displayUpdateTime = options.displayUpdateTime;
+  localStorage.displayTempC = options.displayTempC;
+  localStorage.displayTempF = options.displayTempF;
   localStorage.colorBackground = options.colorBackground;
   localStorage.colorText = options.colorText;
   localStorage.colorHourHand = options.colorHourHand;
