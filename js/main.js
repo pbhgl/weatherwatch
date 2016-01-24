@@ -152,6 +152,21 @@ function loadOptions() {
     $displayTempF[0].checked = localStorage.displayTempF === 'true';
   }
 
+  var $weatherAlerts = $('#weatherAlerts');
+  if (callerVersion < 109) {
+    $weatherAlerts.css('display', 'none');
+  }
+
+  var $showAlertNotification = $('#showAlertNotification');
+  if (localStorage.showAlertNotification) {
+    $showAlertNotification[0].checked = localStorage.showAlertNotification === 'true';
+  }
+
+  var $minAlertLevel = $('#minAlertLevel');
+  if (localStorage.minAlertLevel) {
+    $minAlertLevel[0].value = localStorage.minAlertLevel;
+  }
+
   var $colorBackground = $('#colorBackground');
   if (localStorage.colorBackground) {
     $colorBackground[0].value = localStorage.colorBackground;
@@ -227,6 +242,8 @@ function getAndStoreConfigData() {
   var $displayUpdateTime = $('#displayUpdateTime');
   var $displayTempC = $('#displayTempC');
   var $displayTempF = $('#displayTempF');
+  var $showAlertNotification = $('#showAlertNotification');
+  var $minAlertLevel = $('#minAlertLevel');
   var $colorBackground = $('#colorBackground');
   var $colorText = $('#colorText');
   var $colorHourHand = $('#colorHourHand');
@@ -253,6 +270,8 @@ function getAndStoreConfigData() {
     displayUpdateTime: $displayUpdateTime[0].checked,
     displayTempC: $displayTempC[0].checked,
     displayTempF: $displayTempF[0].checked,
+    showAlertNotification: $showAlertNotification[0].checked,
+    minAlertLevel: $minAlertLevel.val(),
     colorBackground: $colorBackground.val(),
     colorText: $colorText.val(),
     colorHourHand: $colorHourHand.val(),
@@ -278,6 +297,8 @@ function getAndStoreConfigData() {
   localStorage.displayUpdateTime = options.displayUpdateTime;
   localStorage.displayTempC = options.displayTempC;
   localStorage.displayTempF = options.displayTempF;
+  localStorage.showAlertNotification = options.showAlertNotification;
+  localStorage.minAlertLevel = options.minAlertLevel;
   localStorage.colorBackground = options.colorBackground;
   localStorage.colorText = options.colorText;
   localStorage.colorHourHand = options.colorHourHand;

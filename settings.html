@@ -119,6 +119,26 @@
       </div>
     </div>
 
+    <div id="weatherAlerts" class="item-container">
+      <div class="item-container-header">Weather Alerts</div>
+      <div class="item-container-footer">Currently weather alerts are available for Europe only.
+      </div>
+      <div class="item-container-content">
+        <label class="item">
+          Show Alert Notification
+          <input id="showAlertNotification" type="checkbox" class="item-checkbox" name="showAlertNotification">
+        </label>
+        <label class="item">
+          Minimum Alert Level (Europe only)
+          <select id="minAlertLevel" name="minAlertLevel" class="item-select">
+            <option class="item-select-option" value="2" style="background-color:yellow;" selected>potentially dangerous</option>
+            <option class="item-select-option" value="3" style="background-color:orange;">dangerous</option>
+            <option class="item-select-option" value="4" style="background-color:red;">very dangerous</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
     <div id="colorSettings" class="item-container">
       <div class="item-container-header">Color Settings</div>
       <div class="item-container-content">
