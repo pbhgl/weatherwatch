@@ -121,7 +121,8 @@
 
     <div id="weatherAlerts" class="item-container">
       <div class="item-container-header">Weather Alerts</div>
-      <div class="item-container-footer">Currently weather alerts are available for Europe only.
+      <div class="item-container-footer">
+        Currently weather alerts are available for Europe only.
       </div>
       <div class="item-container-content">
         <label class="item">
@@ -129,12 +130,14 @@
           <input id="showAlertNotification" type="checkbox" class="item-checkbox" name="showAlertNotification">
         </label>
         <label class="item">
-          Minimum Alert Level (Europe only)
+          Alert Levels (Europe only)
           <select id="minAlertLevel" name="minAlertLevel" class="item-select">
-            <option class="item-select-option" value="2" style="background-color:yellow;" selected>potentially dangerous</option>
-            <option class="item-select-option" value="3" style="background-color:orange;">dangerous</option>
-            <option class="item-select-option" value="4" style="background-color:red;">very dangerous</option>
+            <option class="item-select-option" value="2" selected>2,3,4</option>
+            <option class="item-select-option" value="3">3,4</option>
+            <option class="item-select-option" value="4">4</option>
           </select>
+          <div class="item-container-footer">
+            level 2: potentially dangerous<br>level 3: dangerous<br>level 4: very dangerous
         </label>
       </div>
     </div>
