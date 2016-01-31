@@ -29,8 +29,8 @@
     </div>
 
     <div class="item-container">
-      <div class="item-container-header">Weather Underground API Key</div>
-      <div class="item-container-content">
+      <div id='headerWeatherService' class="item-container-header">Weather Underground API Key</div>
+      <div id='contentWeatherService' class="item-container-content">
         <label class="item">
           <div class="item-input-wrapper">
             <input id="apiKey" type="text" class="item-input" name="apikey" placeholder="Enter your API key here">
@@ -44,8 +44,8 @@
     </div>
 
     <div class="item-container">
-      <div class="item-container-header">Location</div>
-      <div class="item-container-content">
+      <div id='headerLocation' class="item-container-header">Location</div>
+      <div id='contentLocation' class="item-container-content">
         <label class="item">
           Use GPS Location
           <input id="gps" type="radio" class="item-radio" name="location" value="usegps" checked>
@@ -72,8 +72,8 @@
     </div>
 
     <div class="item-container">
-      <div class="item-container-header">Weather Update Frequency (Minutes)</div>
-      <div class="item-container-content">
+      <div id='headerFrequency' class="item-container-header">Weather Update Frequency (Minutes)</div>
+      <div id='contentFrequency' class="item-container-content">
         <label class="item">
           <input type="range" class="item-slider" name="sliderfreq" value="60">
           <div class="item-input-wrapper item-slider-text">
@@ -84,8 +84,8 @@
     </div>
 
     <div class="item-container">
-      <div class="item-container-header">Display Configuration</div>
-      <div class="item-container-content">
+      <div id='headerDisplay' class="item-container-header">Display Configuration</div>
+      <div id='contentDisplay' class="item-container-content">
         <label class="item">
           Display Location
           <input id="displayLocation" type="checkbox" class="item-checkbox" name="displaylocation" checked>
@@ -120,11 +120,11 @@
     </div>
 
     <div id="weatherAlerts" class="item-container">
-      <div class="item-container-header">Weather Alerts</div>
+      <div id='headerAlerts' class="item-container-header">Weather Alerts</div>
       <div class="item-container-footer">
         Currently weather alerts are available for Europe only.
       </div>
-      <div class="item-container-content">
+      <div id='contentAlerts' class="item-container-content">
         <label class="item">
           Show Alert Notification
           <input id="showAlertNotification" type="checkbox" class="item-checkbox" name="showAlertNotification">
@@ -143,8 +143,8 @@
     </div>
 
     <div id="colorSettings" class="item-container">
-      <div class="item-container-header">Color Settings</div>
-      <div class="item-container-content">
+      <div id='headerColors' class="item-container-header">Color Settings</div>
+      <div id='contentColors' class="item-container-content">
         <label class="item">
           Background
           <input id="colorBackground" type="text" class="item-color item-color-normal" name="color-bg" value="0x000000">
@@ -183,8 +183,8 @@
 
     <span id='connectionSettings'>
     <div class="item-container">
-      <div class="item-container-header">Bluetooth Connection</div>
-      <div class="item-container-content">
+      <div id='headerConnection' class="item-container-header">Bluetooth Connection</div>
+      <div id='contentConnection' class="item-container-content">
         <span id='InvertOnDisconnect'>
           <label class="item">
             Invert Colors on Disconnect

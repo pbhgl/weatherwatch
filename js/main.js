@@ -1,5 +1,6 @@
 (function() {
   loadOptions();
+  initContentShowHide();
   setHandlers();
 })();
 
@@ -7,6 +8,76 @@ function setHandlers() {
   var $apiKey = $('#apiKey');
   $apiKey.on('change', function() {
     $apiKey[0].value = $apiKey[0].value.replace(/\W/g, "");
+  });
+
+  var $headerWeatherService = $('#headerWeatherService');
+  var $contentWeatherService = $('#contentWeatherService');
+  $headerWeatherService.on('click', function() {
+    if ($contentWeatherService.css('display') == 'none') {
+      $contentWeatherService.css('display', '');
+    } else {
+      $contentWeatherService.css('display', 'none');
+    }
+  });
+
+  var $headerLocation = $('#headerLocation');
+  var $contentLocation = $('#contentLocation');
+  $headerLocation.on('click', function() {
+    if ($contentLocation.css('display') == 'none') {
+      $contentLocation.css('display', '');
+    } else {
+      $contentLocation.css('display', 'none');
+    }
+  });
+
+  var $headerFrequency = $('#headerFrequency');
+  var $contentFrequency = $('#contentFrequency');
+  $headerFrequency.on('click', function() {
+    if ($contentFrequency.css('display') == 'none') {
+      $contentFrequency.css('display', '');
+    } else {
+      $contentFrequency.css('display', 'none');
+    }
+  });
+
+  var $headerDisplay = $('#headerDisplay');
+  var $contentDisplay = $('#contentDisplay');
+  $headerDisplay.on('click', function() {
+    if ($contentDisplay.css('display') == 'none') {
+      $contentDisplay.css('display', '');
+    } else {
+      $contentDisplay.css('display', 'none');
+    }
+  });
+
+  var $headerAlerts = $('#headerAlerts');
+  var $contentAlerts = $('#contentAlerts');
+  $headerAlerts.on('click', function() {
+    if ($contentAlerts.css('display') == 'none') {
+      $contentAlerts.css('display', '');
+    } else {
+      $contentAlerts.css('display', 'none');
+    }
+  });
+
+  var $headerColors = $('#headerColors');
+  var $contentColors = $('#contentColors');
+  $headerColors.on('click', function() {
+    if ($contentColors.css('display') == 'none') {
+      $contentColors.css('display', '');
+    } else {
+      $contentColors.css('display', 'none');
+    }
+  });
+
+  var $headerConnection = $('#headerConnection');
+  var $contentConnection = $('#contentConnection');
+  $headerConnection.on('click', function() {
+    if ($contentConnection.css('display') == 'none') {
+      $contentConnection.css('display', '');
+    } else {
+      $contentConnection.css('display', 'none');
+    }
   });
 
   var $gps = $('#gps');
@@ -226,6 +297,21 @@ function loadOptions() {
   if (localStorage.vibrateBtReconnect) {
     $vibrateBtReconnect[0].checked = localStorage.vibrateBtReconnect === 'true';
   }
+}
+
+function initContentShowHide() {
+  var $apiKey = $('#apiKey');
+  var $contentWeatherService = $('#contentWeatherService');
+  if ($apiKey[0].value != '') {
+    $contentWeatherService.css('display', 'none');
+  }
+
+  $('#contentLocation').css('display', 'none');
+  $('#contentFrequency').css('display', 'none');
+  $('#contentDisplay').css('display', 'none');
+  $('#contentAlerts').css('display', 'none');
+  $('#contentColors').css('display', 'none');
+  $('#contentConnection').css('display', 'none');
 }
 
 function getAndStoreConfigData() {
