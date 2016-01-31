@@ -300,18 +300,18 @@ function loadOptions() {
 }
 
 function initContentShowHide() {
-  var $apiKey = $('#apiKey');
-  var $contentWeatherService = $('#contentWeatherService');
-  if ($apiKey[0].value != '') {
-    $contentWeatherService.css('display', 'none');
-  }
-
-  $('#contentLocation').css('display', 'none');
-  $('#contentFrequency').css('display', 'none');
-  $('#contentDisplay').css('display', 'none');
-  $('#contentAlerts').css('display', 'none');
-  $('#contentColors').css('display', 'none');
-  $('#contentConnection').css('display', 'none');
+  // var $apiKey = $('#apiKey');
+  // var $contentWeatherService = $('#contentWeatherService');
+  // if ($apiKey[0].value != '') {
+  //   $contentWeatherService.css('display', 'none');
+  // }
+  //
+  // $('#contentLocation').css('display', 'none');
+  // $('#contentFrequency').css('display', 'none');
+  // $('#contentDisplay').css('display', 'none');
+  // $('#contentAlerts').css('display', 'none');
+  // $('#contentColors').css('display', 'none');
+  // $('#contentConnection').css('display', 'none');
 }
 
 function getAndStoreConfigData() {
