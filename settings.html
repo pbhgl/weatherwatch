@@ -122,7 +122,7 @@
     <div id="weatherAlerts" class="item-container">
       <div id='headerAlerts' class="item-container-header">Weather Alerts</div>
       <div class="item-container-footer">
-        Currently weather alerts are available for Europe only.
+        Weather alerts are available for Europe and US.
       </div>
       <div id='contentAlerts' class="item-container-content">
         <label class="item">
@@ -137,7 +137,19 @@
             <option class="item-select-option" value="4">4</option>
           </select>
           <div class="item-container-footer">
-            level 2: potentially dangerous<br>level 3: dangerous<br>level 4: very dangerous
+            2: potentially dangerous<br>3: dangerous<br>4: very dangerous
+          </div>
+        </label>
+        <label id="alertsUS" class="item">
+          Alert Significance (US only)
+          <select id="alertSignificances" name="alertSignificances" class="item-select">
+            <option class="item-select-option" value="WAY" selected>W,A,Y</option>
+            <option class="item-select-option" value="WA">W,A</option>
+            <option class="item-select-option" value="W">W</option>
+          </select>
+          <div class="item-container-footer">
+            W: Warning<br>A: Watch<br>Y: Advisory
+          </div>
         </label>
       </div>
     </div>

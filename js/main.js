@@ -1,6 +1,6 @@
 (function() {
   loadOptions();
-  initContentShowHide();
+  // initContentShowHide();
   setHandlers();
 })();
 
@@ -238,6 +238,16 @@ function loadOptions() {
     $minAlertLevel[0].value = localStorage.minAlertLevel;
   }
 
+  var $alertsUS = $('#alertsUS');
+  if (callerVersion < 113) {
+    $alertsUS.css('display', 'none');
+  }
+
+  var $alertSignificances = ('#alertSignificances');
+  if (localStorage.alertSignificances) {
+    $alertSignificances[0].value = localStorage.alertSignificances;
+  }
+
   var $colorBackground = $('#colorBackground');
   if (localStorage.colorBackground) {
     $colorBackground[0].value = localStorage.colorBackground;
@@ -300,18 +310,18 @@ function loadOptions() {
 }
 
 function initContentShowHide() {
-  // var $apiKey = $('#apiKey');
-  // var $contentWeatherService = $('#contentWeatherService');
-  // if ($apiKey[0].value != '') {
-  //   $contentWeatherService.css('display', 'none');
-  // }
-  //
-  // $('#contentLocation').css('display', 'none');
-  // $('#contentFrequency').css('display', 'none');
-  // $('#contentDisplay').css('display', 'none');
-  // $('#contentAlerts').css('display', 'none');
-  // $('#contentColors').css('display', 'none');
-  // $('#contentConnection').css('display', 'none');
+  var $apiKey = $('#apiKey');
+  var $contentWeatherService = $('#contentWeatherService');
+  if ($apiKey[0].value != '') {
+    $contentWeatherService.css('display', 'none');
+  }
+
+  $('#contentLocation').css('display', 'none');
+  $('#contentFrequency').css('display', 'none');
+  $('#contentDisplay').css('display', 'none');
+  $('#contentAlerts').css('display', 'none');
+  $('#contentColors').css('display', 'none');
+  $('#contentConnection').css('display', 'none');
 }
 
 function getAndStoreConfigData() {
@@ -330,6 +340,7 @@ function getAndStoreConfigData() {
   var $displayTempF = $('#displayTempF');
   var $showAlertNotification = $('#showAlertNotification');
   var $minAlertLevel = $('#minAlertLevel');
+  var $alertSignificances = $('#alertSignificances');
   var $colorBackground = $('#colorBackground');
   var $colorText = $('#colorText');
   var $colorHourHand = $('#colorHourHand');
@@ -358,6 +369,7 @@ function getAndStoreConfigData() {
     displayTempF: $displayTempF[0].checked,
     showAlertNotification: $showAlertNotification[0].checked,
     minAlertLevel: $minAlertLevel.val(),
+    alertSignificances: $alertSignificances.val(),
     colorBackground: $colorBackground.val(),
     colorText: $colorText.val(),
     colorHourHand: $colorHourHand.val(),
@@ -385,6 +397,7 @@ function getAndStoreConfigData() {
   localStorage.displayTempF = options.displayTempF;
   localStorage.showAlertNotification = options.showAlertNotification;
   localStorage.minAlertLevel = options.minAlertLevel;
+  localStorage.alertSignificances = options.alertSignificances;
   localStorage.colorBackground = options.colorBackground;
   localStorage.colorText = options.colorText;
   localStorage.colorHourHand = options.colorHourHand;
