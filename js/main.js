@@ -50,6 +50,16 @@ function setHandlers() {
     }
   });
 
+  // var $headerTapActions = $('#headerTapActions');
+  // var $contentTapActions = $('#contentTapActions');
+  // $headerTapActions.on('click', function() {
+  //   if ($contentTapActions.css('display') == 'none') {
+  //     $contentTapActions.css('display', '');
+  //   } else {
+  //     $contentTapActions.css('display', 'none');
+  //   }
+  // });
+
   var $headerAlerts = $('#headerAlerts');
   var $contentAlerts = $('#contentAlerts');
   $headerAlerts.on('click', function() {
@@ -223,6 +233,16 @@ function loadOptions() {
     $displayTempF[0].checked = localStorage.displayTempF === 'true';
   }
 
+  var $selectTapAction = $('#selectTapAction');
+  if (callerVersion < 114) {
+    $selectTapAction.css('display', 'none');
+  }
+
+  var $tapAction = $('#tapAction');
+  if (localStorage.tapAction) {
+    $tapAction[0].value = localStorage.tapAction;
+  }
+
   var $weatherAlerts = $('#weatherAlerts');
   if (callerVersion < 109) {
     $weatherAlerts.css('display', 'none');
@@ -319,6 +339,7 @@ function initContentShowHide() {
   $('#contentLocation').css('display', 'none');
   $('#contentFrequency').css('display', 'none');
   $('#contentDisplay').css('display', 'none');
+  $('#contentTapAction').css('display', 'none');
   $('#contentAlerts').css('display', 'none');
   $('#contentColors').css('display', 'none');
   $('#contentConnection').css('display', 'none');
@@ -338,6 +359,7 @@ function getAndStoreConfigData() {
   var $displayUpdateTime = $('#displayUpdateTime');
   var $displayTempC = $('#displayTempC');
   var $displayTempF = $('#displayTempF');
+  var $tapAction = $('#tapAction');
   var $showAlertNotification = $('#showAlertNotification');
   var $minAlertLevel = $('#minAlertLevel');
   var $alertSignificances = $('#alertSignificances');
@@ -367,6 +389,7 @@ function getAndStoreConfigData() {
     displayUpdateTime: $displayUpdateTime[0].checked,
     displayTempC: $displayTempC[0].checked,
     displayTempF: $displayTempF[0].checked,
+    tapAction: $tapAction.val(),
     showAlertNotification: $showAlertNotification[0].checked,
     minAlertLevel: $minAlertLevel.val(),
     alertSignificances: $alertSignificances.val(),
@@ -395,6 +418,7 @@ function getAndStoreConfigData() {
   localStorage.displayUpdateTime = options.displayUpdateTime;
   localStorage.displayTempC = options.displayTempC;
   localStorage.displayTempF = options.displayTempF;
+  localStorage.tapAction = options.tapAction;
   localStorage.showAlertNotification = options.showAlertNotification;
   localStorage.minAlertLevel = options.minAlertLevel;
   localStorage.alertSignificances = options.alertSignificances;

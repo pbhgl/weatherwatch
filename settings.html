@@ -116,8 +116,26 @@
             <input id="displayTempF" type="checkbox" class="item-checkbox" name="displaytempf">
           </label>
         </span>
+        <label id="selectTapAction" class="item">
+          Tap Action
+          <select id="tapAction" name="tapAction" class="item-select">
+            <option class="item-select-option" value="0">Ignore tap</option>
+            <option class="item-select-option" value="1" selected>Weather info in the front</option>
+            <option class="item-select-option" value="2">Hide hands</option>
+          </select>
+          <div class="item-container-footer">
+            Switches back to normal display after 10 seconds
+          </div>
+        </label>
       </div>
     </div>
+
+    <!-- <div id="selectTapActions" class="item-container">
+      <div id='headerTapActions' class="item-container-header">Tap Actions</div>
+      <div id='contentTapActions' class="item-container-content">
+        later: tapActions here
+      </div>
+    </div> -->
 
     <div id="weatherAlerts" class="item-container">
       <div id='headerAlerts' class="item-container-header">Weather Alerts</div>
