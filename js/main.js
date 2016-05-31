@@ -108,12 +108,12 @@ function setHandlers() {
 
   var $latitude = $('#latitude');
   $latitude.on('change', function() {
-    $latitude[0].value = $latitude[0].value.replace(/[^0-9.+-]/g, "");
+    $latitude[0].value = $latitude[0].value.replace(/[^0-9.+\-]/g, "");
   });
 
   var $longitude = $('#longitude');
   $longitude.on('change', function() {
-    $longitude[0].value = $longitude[0].value.replace(/[^0-9.+-]/g, "");
+    $longitude[0].value = $longitude[0].value.replace(/[^0-9.+\-]/g, "");
   });
 
   var $reloadDefaultColors = $('#reloadDefaultColors');
@@ -378,19 +378,19 @@ function getAndStoreConfigData() {
   options = {
     versionLabel: callerVersion,
     apiKey: $apiKey.val().replace(/\W/g, ""),
-    useLatLon: $latlon[0].checked,
+    useLatLon: ($latlon[0].checked ? 1 : 0),
     latitude: $latitude.val(),
     longitude: $longitude.val(),
     frequency: $frequency.val(),
-    displayLocation: $displayLocation[0].checked,
-    displayHourMarkers: $displayHourMarkers[0].checked,
-    displayMinorMarkers: $displayMinorMarkers[0].checked,
-    displayObservationTime: $displayObservationTime[0].checked,
-    displayUpdateTime: $displayUpdateTime[0].checked,
-    displayTempC: $displayTempC[0].checked,
-    displayTempF: $displayTempF[0].checked,
+    displayLocation: ($displayLocation[0].checked ? 1 : 0),
+    displayHourMarkers: ($displayHourMarkers[0].checked ? 1 : 0),
+    displayMinorMarkers: ($displayMinorMarkers[0].checked ? 1 : 0),
+    displayObservationTime: ($displayObservationTime[0].checked ? 1 : 0),
+    displayUpdateTime: ($displayUpdateTime[0].checked ? 1 : 0),
+    displayTempC: ($displayTempC[0].checked ? 1 : 0),
+    displayTempF: ($displayTempF[0].checked ? 1 : 0),
     tapAction: $tapAction.val(),
-    showAlertNotification: $showAlertNotification[0].checked,
+    showAlertNotification: ($showAlertNotification[0].checked ? 1 : 0),
     minAlertLevel: $minAlertLevel.val(),
     alertSignificances: $alertSignificances.val(),
     colorBackground: $colorBackground.val(),
@@ -400,9 +400,9 @@ function getAndStoreConfigData() {
     colorMinuteHandNoBT: $colorMinuteHandNoBT.val(),
     colorHourMarkers: $colorHourMarkers.val(),
     colorMinorMarkers: $colorMinorMarkers.val(),
-    invertBtDisconnect: $invertBtDisconnect[0].checked,
-    vibrateBtDisconnect: $vibrateBtDisconnect[0].checked,
-    vibrateBtReconnect: $vibrateBtReconnect[0].checked
+    invertBtDisconnect: ($invertBtDisconnect[0].checked ? 1 : 0),
+    vibrateBtDisconnect: ($vibrateBtDisconnect[0].checked ? 1 : 0),
+    vibrateBtReconnect: ($vibrateBtReconnect[0].checked ? 1 : 0)
   };
 
   localStorage.versionLabel = callerVersion;
