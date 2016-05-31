@@ -166,7 +166,7 @@ function loadOptions() {
   var $latlon = $('#latlon');
   var $latlonSettings = $('#latlon-settings');
   if (localStorage.useLatLon) {
-    if (localStorage.useLatLon === 'true') {
+    if (localStorage.useLatLon == 1) {
       $gps[0].checked = false;
       $latlon[0].checked = true;
     } else {
@@ -195,27 +195,27 @@ function loadOptions() {
 
   var $displayLocation = $('#displayLocation');
   if (localStorage.displayLocation) {
-    $displayLocation[0].checked = localStorage.displayLocation === 'true';
+    $displayLocation[0].checked = localStorage.displayLocation == 1;
   }
 
   var $displayHourMarkers = $('#displayHourMarkers');
   if (localStorage.displayHourMarkers) {
-    $displayHourMarkers[0].checked = localStorage.displayHourMarkers === 'true';
+    $displayHourMarkers[0].checked = localStorage.displayHourMarkers == 1;
   }
 
   var $displayMinorMarkers = $('#displayMinorMarkers');
   if (localStorage.displayMinorMarkers) {
-    $displayMinorMarkers[0].checked = localStorage.displayMinorMarkers === 'true';
+    $displayMinorMarkers[0].checked = localStorage.displayMinorMarkers == 1;
   }
 
   var $displayObservationTime = $('#displayObservationTime');
   if (localStorage.displayObservationTime) {
-    $displayObservationTime[0].checked = localStorage.displayObservationTime === 'true';
+    $displayObservationTime[0].checked = localStorage.displayObservationTime == 1;
   }
 
   var $displayUpdateTime = $('#displayUpdateTime');
   if (localStorage.displayUpdateTime) {
-    $displayUpdateTime[0].checked = localStorage.displayUpdateTime === 'true';
+    $displayUpdateTime[0].checked = localStorage.displayUpdateTime == 1;
   }
 
   var $displayTemp = $('#displayTemp');
@@ -225,12 +225,12 @@ function loadOptions() {
 
   var $displayTempC = $('#displayTempC');
   if (localStorage.displayTempC) {
-    $displayTempC[0].checked = localStorage.displayTempC === 'true';
+    $displayTempC[0].checked = localStorage.displayTempC == 1;
   }
 
   var $displayTempF = $('#displayTempF');
   if (localStorage.displayTempF) {
-    $displayTempF[0].checked = localStorage.displayTempF === 'true';
+    $displayTempF[0].checked = localStorage.displayTempF == 1;
   }
 
   var $selectTapAction = $('#selectTapAction');
@@ -250,7 +250,7 @@ function loadOptions() {
 
   var $showAlertNotification = $('#showAlertNotification');
   if (localStorage.showAlertNotification) {
-    $showAlertNotification[0].checked = localStorage.showAlertNotification === 'true';
+    $showAlertNotification[0].checked = localStorage.showAlertNotification == 1;
   }
 
   var $minAlertLevel = $('#minAlertLevel');
@@ -315,17 +315,17 @@ function loadOptions() {
 
   var $invertBtDisconnect = $('#invertBtDisconnect');
   if (localStorage.invertBtDisconnect) {
-    $invertBtDisconnect[0].checked = localStorage.invertBtDisconnect === 'true';
+    $invertBtDisconnect[0].checked = localStorage.invertBtDisconnect == 1;
   }
 
   var $vibrateBtDisconnect = $('#vibrateBtDisconnect');
   if (localStorage.vibrateBtDisconnect) {
-    $vibrateBtDisconnect[0].checked = localStorage.vibrateBtDisconnect === 'true';
+    $vibrateBtDisconnect[0].checked = localStorage.vibrateBtDisconnect == 1;
   }
 
   var $vibrateBtReconnect = $('#vibrateBtReconnect');
   if (localStorage.vibrateBtReconnect) {
-    $vibrateBtReconnect[0].checked = localStorage.vibrateBtReconnect === 'true';
+    $vibrateBtReconnect[0].checked = localStorage.vibrateBtReconnect == 1;
   }
 }
 
