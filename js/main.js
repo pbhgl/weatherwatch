@@ -1,25 +1,9 @@
 (function() {
   loadOptions();
-  // initContentShowHide();
   setHandlers();
 })();
 
 function setHandlers() {
-  var $apiKey = $('#apiKey');
-  $apiKey.on('change', function() {
-    $apiKey[0].value = $apiKey[0].value.replace(/\W/g, "");
-  });
-
-  var $headerWeatherService = $('#headerWeatherService');
-  var $contentWeatherService = $('#contentWeatherService');
-  $headerWeatherService.on('click', function() {
-    if ($contentWeatherService.css('display') == 'none') {
-      $contentWeatherService.css('display', '');
-    } else {
-      $contentWeatherService.css('display', 'none');
-    }
-  });
-
   var $headerLocation = $('#headerLocation');
   var $contentLocation = $('#contentLocation');
   $headerLocation.on('click', function() {
@@ -40,6 +24,24 @@ function setHandlers() {
     }
   });
 
+  var $frequencySlider = $('#frequency-slider');
+  $frequencySlider.on('change', function() {
+    var $current = $(this);
+    if ($current.val() < 60) {
+      $frequencySlider.val(60);
+      $frequencyText.val(60);
+    }
+  });
+
+  var $frequencyText = $('#frequency-text');
+  $frequencyText.on('input', function() {
+    var $current = $(this);
+    if ($current.val() < 60) {
+      $frequencySlider.val(60);
+      $frequencyText.val(60);
+    }
+  });
+
   var $headerDisplay = $('#headerDisplay');
   var $contentDisplay = $('#contentDisplay');
   $headerDisplay.on('click', function() {
@@ -47,26 +49,6 @@ function setHandlers() {
       $contentDisplay.css('display', '');
     } else {
       $contentDisplay.css('display', 'none');
-    }
-  });
-
-  // var $headerTapActions = $('#headerTapActions');
-  // var $contentTapActions = $('#contentTapActions');
-  // $headerTapActions.on('click', function() {
-  //   if ($contentTapActions.css('display') == 'none') {
-  //     $contentTapActions.css('display', '');
-  //   } else {
-  //     $contentTapActions.css('display', 'none');
-  //   }
-  // });
-
-  var $headerAlerts = $('#headerAlerts');
-  var $contentAlerts = $('#contentAlerts');
-  $headerAlerts.on('click', function() {
-    if ($contentAlerts.css('display') == 'none') {
-      $contentAlerts.css('display', '');
-    } else {
-      $contentAlerts.css('display', 'none');
     }
   });
 
@@ -152,14 +134,9 @@ function loadOptions() {
   storageVersion = localStorage.versionLabel;
 
   var platform = getQueryParam('platform', 'chalk');
-  if (platform == 'aplite') {
+  if (platform == 'bw') {
     $colorSettings = $('#colorSettings');
     $colorSettings.css('display', 'none');
-  }
-
-  var $apiKey = $('#apiKey');
-  if (localStorage.apiKey) {
-    $apiKey[0].value = localStorage.apiKey;
   }
 
   var $gps = $('#gps');
@@ -188,7 +165,7 @@ function loadOptions() {
     $longitude[0].value = localStorage.longitude;
   }
 
-  var $frequency = $('#frequency');
+  var $frequency = $('#frequency-text');
   if (localStorage.frequency) {
     $frequency[0].value = localStorage.frequency;
   }
@@ -208,20 +185,12 @@ function loadOptions() {
     $displayMinorMarkers[0].checked = localStorage.displayMinorMarkers == 1;
   }
 
-  var $displayObservationTime = $('#displayObservationTime');
-  if (localStorage.displayObservationTime) {
-    $displayObservationTime[0].checked = localStorage.displayObservationTime == 1;
-  }
-
   var $displayUpdateTime = $('#displayUpdateTime');
   if (localStorage.displayUpdateTime) {
     $displayUpdateTime[0].checked = localStorage.displayUpdateTime == 1;
   }
 
   var $displayTemp = $('#displayTemp');
-  if (callerVersion < 103) {
-    $displayTemp.css('display', 'none');
-  }
 
   var $displayTempC = $('#displayTempC');
   if (localStorage.displayTempC) {
@@ -233,39 +202,9 @@ function loadOptions() {
     $displayTempF[0].checked = localStorage.displayTempF == 1;
   }
 
-  var $selectTapAction = $('#selectTapAction');
-  if (callerVersion < 114) {
-    $selectTapAction.css('display', 'none');
-  }
-
   var $tapAction = $('#tapAction');
   if (localStorage.tapAction) {
     $tapAction[0].value = localStorage.tapAction;
-  }
-
-  var $weatherAlerts = $('#weatherAlerts');
-  if (callerVersion < 109) {
-    $weatherAlerts.css('display', 'none');
-  }
-
-  var $showAlertNotification = $('#showAlertNotification');
-  if (localStorage.showAlertNotification) {
-    $showAlertNotification[0].checked = localStorage.showAlertNotification == 1;
-  }
-
-  var $minAlertLevel = $('#minAlertLevel');
-  if (localStorage.minAlertLevel) {
-    $minAlertLevel[0].value = localStorage.minAlertLevel;
-  }
-
-  var $alertsUS = $('#alertsUS');
-  if (callerVersion < 113) {
-    $alertsUS.css('display', 'none');
-  }
-
-  var $alertSignificances = ('#alertSignificances');
-  if (localStorage.alertSignificances) {
-    $alertSignificances[0].value = localStorage.alertSignificances;
   }
 
   var $colorBackground = $('#colorBackground');
@@ -309,7 +248,7 @@ function loadOptions() {
   }
 
   var $InvertOnDisconnect = $('#InvertOnDisconnect');
-  if (platform != 'aplite') {
+  if (platform != 'bw') {
     $InvertOnDisconnect.css('display', 'none');
   }
 
@@ -330,39 +269,27 @@ function loadOptions() {
 }
 
 function initContentShowHide() {
-  var $apiKey = $('#apiKey');
-  var $contentWeatherService = $('#contentWeatherService');
-  if ($apiKey[0].value != '') {
-    $contentWeatherService.css('display', 'none');
-  }
-
   $('#contentLocation').css('display', 'none');
   $('#contentFrequency').css('display', 'none');
   $('#contentDisplay').css('display', 'none');
   $('#contentTapAction').css('display', 'none');
-  $('#contentAlerts').css('display', 'none');
   $('#contentColors').css('display', 'none');
   $('#contentConnection').css('display', 'none');
 }
 
 function getAndStoreConfigData() {
-  var $apiKey = $('#apiKey');
   var $gps = $('#gps');
   var $latlon = $('#latlon');
   var $latitude = $('#latitude');
   var $longitude = $('#longitude');
-  var $frequency = $('#frequency');
+  var $frequency = $('#frequency-text');
   var $displayLocation = $('#displayLocation');
   var $displayHourMarkers = $('#displayHourMarkers');
   var $displayMinorMarkers = $('#displayMinorMarkers');
-  var $displayObservationTime = $('#displayObservationTime');
   var $displayUpdateTime = $('#displayUpdateTime');
   var $displayTempC = $('#displayTempC');
   var $displayTempF = $('#displayTempF');
   var $tapAction = $('#tapAction');
-  var $showAlertNotification = $('#showAlertNotification');
-  var $minAlertLevel = $('#minAlertLevel');
-  var $alertSignificances = $('#alertSignificances');
   var $colorBackground = $('#colorBackground');
   var $colorText = $('#colorText');
   var $colorHourHand = $('#colorHourHand');
@@ -377,7 +304,6 @@ function getAndStoreConfigData() {
   var options;
   options = {
     versionLabel: callerVersion,
-    apiKey: $apiKey.val().replace(/\W/g, ""),
     useLatLon: ($latlon[0].checked ? 1 : 0),
     latitude: $latitude.val(),
     longitude: $longitude.val(),
@@ -385,14 +311,10 @@ function getAndStoreConfigData() {
     displayLocation: ($displayLocation[0].checked ? 1 : 0),
     displayHourMarkers: ($displayHourMarkers[0].checked ? 1 : 0),
     displayMinorMarkers: ($displayMinorMarkers[0].checked ? 1 : 0),
-    displayObservationTime: ($displayObservationTime[0].checked ? 1 : 0),
     displayUpdateTime: ($displayUpdateTime[0].checked ? 1 : 0),
     displayTempC: ($displayTempC[0].checked ? 1 : 0),
     displayTempF: ($displayTempF[0].checked ? 1 : 0),
     tapAction: $tapAction.val(),
-    showAlertNotification: ($showAlertNotification[0].checked ? 1 : 0),
-    minAlertLevel: $minAlertLevel.val(),
-    alertSignificances: $alertSignificances.val(),
     colorBackground: $colorBackground.val(),
     colorText: $colorText.val(),
     colorHourHand: $colorHourHand.val(),
@@ -406,7 +328,6 @@ function getAndStoreConfigData() {
   };
 
   localStorage.versionLabel = callerVersion;
-  localStorage.apiKey = options.apiKey;
   localStorage.useLatLon = options.useLatLon;
   localStorage.latitude = options.latitude;
   localStorage.longitude = options.longitude;
@@ -414,14 +335,10 @@ function getAndStoreConfigData() {
   localStorage.displayLocation = options.displayLocation;
   localStorage.displayHourMarkers = options.displayHourMarkers;
   localStorage.displayMinorMarkers = options.displayMinorMarkers;
-  localStorage.displayObservationTime = options.displayObservationTime;
   localStorage.displayUpdateTime = options.displayUpdateTime;
   localStorage.displayTempC = options.displayTempC;
   localStorage.displayTempF = options.displayTempF;
   localStorage.tapAction = options.tapAction;
-  localStorage.showAlertNotification = options.showAlertNotification;
-  localStorage.minAlertLevel = options.minAlertLevel;
-  localStorage.alertSignificances = options.alertSignificances;
   localStorage.colorBackground = options.colorBackground;
   localStorage.colorText = options.colorText;
   localStorage.colorHourHand = options.colorHourHand;
