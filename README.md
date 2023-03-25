@@ -6,6 +6,8 @@ There is an update available that uses the Dark Sky API: [AWW1 - Analog Weather 
 
 The watch face can be sideloaded as described [here](https://www.guidingtech.com/sideload-apps-pebble-smartwatch/).
 
-**Update March 25st, 2023**: The weather data from Dark Sky will no longer be available after March 31st, 2023.
+## Update March 25th, 2023
+
+The weather data from Dark Sky will no longer be available after March 31st, 2023.
 
 There is now a [new AWW1 version on the Rebble appstore](https://apps.rebble.io/en_US/application/568ec32dfc66e37c3000006c) which uses the weather data from MET Norway.
